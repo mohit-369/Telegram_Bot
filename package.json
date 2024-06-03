@@ -1,0 +1,19 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "groq-sdk": "^0.4.0",
+    "mongoose": "^8.4.1",
+    "openai": "^4.47.3",
+    "telegraf": "^4.16.3"
+  }
+}
