@@ -1,5 +1,9 @@
 // always write command above the text
 require('dotenv').config();
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 const {Telegraf}=require('telegraf');
 
 // import message from 'telegraf/filters';
@@ -33,6 +37,12 @@ try {
     process.kill(process.pid,'SIGTERM');
     
 }
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+
+
 
 
 bot.start(async(ctx)=>{
@@ -185,6 +195,8 @@ bot.on(message('text'),async(ctx)=>{
 })
 
 bot.launch();
+
+
 
 
 // Enable graceful stop
