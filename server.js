@@ -3,6 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const http=require('http');
+
+const server=http.createServer(app);
+
+
 
 const {Telegraf}=require('telegraf');
 
@@ -16,7 +21,7 @@ const userModel=require('./src/models/User');
 
 const mongoconnect=require('./src/config/db');
 
-const bot= new Telegraf(process.env.BOT_TOKEN);
+const bot= new Telegraf(server,process.env.BOT_TOKEN);
 
 
 
@@ -38,9 +43,6 @@ try {
     
 }
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
 
 
 
@@ -195,6 +197,14 @@ bot.on(message('text'),async(ctx)=>{
 })
 
 bot.launch();
+
+app.get('/',(req,res)=>{
+    res.send('Hello World');
+})
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 
 
